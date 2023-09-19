@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class="bg-amber-200 dark:bg-amber-700">
+    <div class="px-8 py-6 text-4xl font-semibold text-white">Book Recommender</div>
+</nav>
+<nav class="bg-amber-200 dark:bg-amber-700">
+    <ul class="px-8 py-6 flex space-x-6 font-meidum">
+        <li>
+            <a href="/" class="text-white hover:underline">Home</a>
+        </li>
+        <li>
+            <a href="/recommend" class="text-white hover:underline">Get Recommendation</a>
+        </li>
+                <li>
+            <a href="#" class="text-white hover:underline">Contact</a>
+        </li>
+        <li>
+            <a href="#" class="text-white hover:underline"></a>
+        </li>
+    </ul>
+</nav>
+<div class="py-8 container mx-auto">
+    <div class="flex justify-center">
+        <div class="w-full md:w-8/12 lg:w-10/12">
+            <form action="/recommend_books" method="post" class="mb-4">
+                <div class="flex justify-center">
+                    <input name="user_input" type="text" class="mt-2 w-96 px-4 py-2 border border-amber-700 rounded-lg shadow-sm focus:outline-none focus:border-amber-700" placeholder="What is the recent book you liked.." required>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class=" mt-2 w-30 px-4 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-900 focus:outline-none focus:bg-amber-700 mx-auto">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if data %}
+    <div class="flex flex-wrap justify-center -mx-2">
+        {% for i in data %}
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 px-2 py-4 mt-4">
+            <img  src="{{i[2]}}">
+            <p class="text-gray-800 text-lg font-semibold">{{i[0]}}</p>
+            <p class="text-gray-600 text-sm">{{i[1]}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

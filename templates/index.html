@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<nav class="bg-amber-200 dark:bg-amber-700">
+    <div class="px-8 py-6 text-4xl font-semibold text-white">Book Recommender</div>
+</nav>
+<nav class="bg-amber-200 dark:bg-amber-700">
+    <ul class="px-8 py-6 flex space-x-6 font-meidum">
+        <li>
+            <a href="/" class="text-white hover:underline">Home</a>
+        </li>
+        <li>
+            <a href="/recommend" class="text-white hover:underline">Get Recommendation</a>
+        </li>
+        <li>
+            <a href="#" class="text-white hover:underline">Contact</a>
+        </li>
+    </ul>
+</nav>
+<div class="px-8 py-6 text-5xl text-amber-700">Top Books</div>
+    <div class="px-20 py-6 container">
+        <div class="flex flex-wrap grid grid-cols-4 gap-4 flex justify-between">
+            {% for i in range(book_name|length) %}
+                    <div class="rounded border-2 border-amber-700">
+                        <div class="px-4 py-4">
+                            <div class="flex justify-center items-center">
+                                <img class="container w-24 h-40 scale-100 hover:scale-150 ease-in duration-300"  src="{{ image[i] }}" alt="Book Image">
+                            </div>
+                            <p class="py-2 text-amber-700 text-xl">{{ book_name[i] }}</p>
+                            <h4 class="text-amber-700 text-l">Author - {{ author[i] }}</h4>
+                            <h4 class="text-amber-700 text-l">Rating - {{ rating[i] }} ({{ votes[i] }})</h4>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
